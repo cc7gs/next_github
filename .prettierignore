@@ -1,0 +1,10 @@
+**/*.svg
+./*.json
+.next
+.gitignore
+.eslintignore
+.eslintrc.js
+public
+.prettierignore
+yarn.lock
+.DS_Store

@@ -1,0 +1,45 @@
+{
+  "name": "next_demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint && npm run lint:prettier && npm run lint:style",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+    "lint:prettier": "prettier -c --write \"**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"**/*.{less,css,scss}\"",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./ && npm run lint:style",
+    "prettier": "prettier --write \"**/**.{js,jsx,tsx,ts,less,md,json}\""
+  },
+  "lint-staged": {
+    "**/*.{less,scss,css}": "stylelint --fix",
+    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.30",
+    "@umijs/fabric": "^2.6.2",
+    "eslint": "^7.31.0",
+    "eslint-config-next": "11.1.2",
+    "lint-staged": "^11.2.3",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1",
+    "stylelint": "^13.13.1",
+    "typescript": "4.4.4",
+    "yorkie": "^2.0.0"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "fabric verify-commit"
+  }
+}
